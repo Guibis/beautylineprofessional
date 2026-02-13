@@ -80,3 +80,9 @@ export const COSMETICS = [
         name: "Skin Renew"
     }
 ];
+
+export const COURSES = [
+    { emoji: "💅", title: "Nail Design", desc: "Dal base all'avanzato in tecniche di unghie in gel, acrilico, nail art e molto altro." },
+    { emoji: "👁️", title: "Ciglia e Sopracciglia", desc: "Extension ciglia, laminazione, design sopracciglia e micropigmentazione." },
+    { emoji: "✨", title: "Trattamenti Viso", desc: "Pulizia del viso, peeling, protocolli anti-età e armonizzazione facciale." }
+]

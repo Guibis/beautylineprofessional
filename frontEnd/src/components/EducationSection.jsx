@@ -1,4 +1,5 @@
 import UploadImages from "./UploadImages";
+import { COURSES } from "../constants/constants";
 
 export default function EducationSection() {
   return (
@@ -12,11 +13,7 @@ export default function EducationSection() {
             </p>
             
             <div className="space-y-6 mb-8">
-              {[
-                { emoji: "💅", title: "Nail Design", desc: "Dal base all'avanzato in tecniche di unghie in gel, acrilico, nail art e molto altro." },
-                { emoji: "👁️", title: "Ciglia e Sopracciglia", desc: "Extension ciglia, laminazione, design sopracciglia e micropigmentazione." },
-                { emoji: "✨", title: "Trattamenti Viso", desc: "Pulizia del viso, peeling, protocolli anti-età e armonizzazione facciale." }
-              ].map((item, index) => (
+              {COURSES.map((item, index) => (
                 <div key={index} className="flex gap-4">
                   <div className="w-14 h-14 rounded-xl bg-purple-100 flex items-center justify-center flex-shrink-0">
                     <span className="text-2xl">{item.emoji}</span>

@@ -16,23 +16,37 @@ export default function ServiceCenter() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {SERVICES.map((service) => (
-            <a 
-              key={service.id} 
-              href={service.link}
-              className="group relative h-80 rounded-3xl overflow-hidden block shadow-lg transform transition-all duration-300 hover:scale-108"
-            >
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-purple-900/40 transition-colors duration-500 z-10"></div>
-              
-              <UploadImages publicId={service.image} width={700} height={780} className="mx-auto"/>
-              
-              <div className="absolute inset-0 flex items-center justify-center z-20 p-4">
-                <h3 className="font-display text-2xl md:text-3xl font-bold text-white text-center drop-shadow-md group-hover:scale-105 transition-transform duration-300">
-                  {service.title}
-                </h3>
-              </div>
-            </a>
-          ))}
+          {SERVICES.map((service) => {
+            const isPlaceholderLink = !service.link || service.link === "#";
+            const cardContent = (
+              <>
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-purple-900/40 transition-colors duration-500 z-10"></div>
+                <UploadImages publicId={service.image} width={700} height={780} className="mx-auto" />
+                <div className="absolute inset-0 flex items-center justify-center z-20 p-4">
+                  <h3 className="font-display text-2xl md:text-3xl font-bold text-white text-center drop-shadow-md group-hover:scale-105 transition-transform duration-300">
+                    {service.title}
+                  </h3>
+                </div>
+              </>
+            );
+            return isPlaceholderLink ? (
+              <button
+                key={service.id}
+                type="button"
+                className="group relative h-80 rounded-3xl overflow-hidden block shadow-lg transform transition-all duration-300 hover:scale-108 text-left"
+              >
+                {cardContent}
+              </button>
+            ) : (
+              <a
+                key={service.id}
+                href={service.link}
+                className="group relative h-80 rounded-3xl overflow-hidden block shadow-lg transform transition-all duration-300 hover:scale-108"
+              >
+                {cardContent}
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>
