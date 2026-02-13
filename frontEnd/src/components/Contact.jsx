@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import UploadImages from "./UploadImages";
+import { Icon } from "./Icons";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -15,16 +16,36 @@ export default function Contact() {
     e.preventDefault();
     setStatus({ state: 'loading', message: '' });
 
-    setTimeout(() => {
-        setStatus({ state: 'success', message: '✓ Messaggio inviato con successo! Ti contatteremo a breve.' });
-        setFormData({
-            first_name: '',
-            last_name: '',
-            email: '',
-            phone: '',
-            message: ''
-        });
-    }, 1500);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      if (!response.ok) {
+        const errorText = await response.text().catch(() => '');
+        throw new Error(errorText || 'Errore durante l\'invio del messaggio.');
+      }
+      setStatus({
+        state: 'success',
+        message: '✓ Messaggio inviato con successo! Ti contatteremo a breve.',
+      });
+      setFormData({
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error("Submission error:", error);
+      setStatus({
+        state: 'error',
+        message: 'Si è verificato un errore durante l\'invio del messaggio. Per favore riprova.',
+      });
+    }
   };
 
   const handleChange = (e) => {
@@ -67,7 +88,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-semibold">Email</p>
-                  <a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJfrslbcbDGjGZhpqDWNBkVHBRNpPXVKNWrlQCZvRFRhlnjWHGBsmSNBcHWrpWSBVCqzhLB" target="_blank" className="text-rose-400">info@beautylineprofessional.com</a>
+                  <a href="mailto:info@beautylineprofessional.com" target="_blank" className="text-rose-400">info@beautylineprofessional.com</a>
                 </div>
               </div>
             </div>
@@ -151,10 +172,7 @@ export default function Contact() {
                 {status.state === 'loading' ? (
                    <>
                     <span>Invio in corso...</span>
-                    <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                     </svg>
+                    <Icon name="spinner" className="w-5 h-5 animate-spin" />
                    </>
                 ) : (
                     <span>Invia Messaggio</span>

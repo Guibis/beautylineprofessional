@@ -60,7 +60,7 @@ export default function Hero() {
           <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">Beauty Line Academy</h1>
           <p className="text-xl md:text-2xl text-stone-100 mb-8 font-light drop-shadow-md">Trasformare la passione in professione attraverso l'eccellenza nell'estetica.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#pilares" className="px-8 py-4 bg-purple-600 text-white rounded-full font-semibold text-lg hover:bg-purple-700 hover:scale-105 transition-all">
+            <a href="#centroAssistenza" className="px-8 py-4 bg-purple-600 text-white rounded-full font-semibold text-lg hover:bg-purple-700 hover:scale-105 transition-all">
               Scopri i Nostri Pilastri
             </a>
             <a href="#contatti" className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white hover:text-stone-900 hover:scale-105 transition-all">

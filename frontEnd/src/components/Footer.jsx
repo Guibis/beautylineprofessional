@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <img src="/logoBeauty.png" alt="Beauty Line Academy Logo" className="w-16 h-16 object-contain" />
+              <UploadImages publicId={"logoBeauty_rtip32"} width={50} height={50}/>
               <span className="font-display text-xl font-semibold">Beauty Line Academy</span>
             </div>
             <p className="text-stone-400 leading-relaxed max-w-md">
