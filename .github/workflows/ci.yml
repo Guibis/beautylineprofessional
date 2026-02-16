@@ -18,6 +18,7 @@ jobs:
       - run: npm ci
         working-directory: backEnd
       - run: node -e 'require("./server")'
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
         working-directory: backEnd
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
