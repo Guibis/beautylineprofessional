@@ -3,10 +3,6 @@ const cors = require("cors");
 const Router = require("./routes/user.router");
 const morgan = require("morgan");
 const connectDB = require("./config/DBmongo");
-require("dotenv").config();
-
-connectDB();
-
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,6 +16,8 @@ app.use("/", Router);
 
 
 if (require.main === module) {
+  require("dotenv").config();
+  connectDB();
   app.listen(PORT, () => {
     console.log("Server running in port ", PORT)
   })
