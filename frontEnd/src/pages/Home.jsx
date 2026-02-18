@@ -15,11 +15,11 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <ServiceCenter id="centroAssistenza" />
+        <ServiceCenter />
+        <AboutUs />
         <EducationSection />
-        <TechnologySection id="tecnologia" />
-        <CosmeticsSection id="prodotti" />
-        <AboutUs id="aboutUs" />
+        <TechnologySection />
+        <CosmeticsSection />
         <GoogleReviews />
         <Contact />
       </main>

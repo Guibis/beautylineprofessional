@@ -2,28 +2,38 @@ import UploadImages from "./UploadImages";
 
 export default function AboutUs() {
     return (
-        <section id="aboutUs" className="py-20 bg-white">
-            <div className="max-w-7xl mx-auto px-6 text-center ">
-                <div className="grid md:grid-cols-2 gap-10 items-center">
-                    <div className="bg-purple-600 rounded-3xl p-7 shadow-2xl border border-stone-200">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white">Chi Siamo</h2>
-                        <div className="w-24 h-1 bg-gradient-to-r mb-6 from-purple-200 to-purple-400 mx-auto mt-2 rounded-full"></div>
-                        <p className="text-white mb-6 leading-relaxed">
-                            La bellezza è un arte che racconta chi sei.
-                        </p>
-                        <p className="text-white mb-6 leading-relaxed">
-                            Siamo Christian e Barbara, e dal 2010 trasformiamo la passione per la bellezza e il benessere in un progetto dedicato a chi ama il mondo dell’estetica. Con il nostro primo negozio, abbiamo creato un luogo dove prendersi cura delle persone è una vera forma d’arte.
-                        </p>
-                        <p className="text-white mb-6 leading-relaxed">
-                            Negli anni, abbiamo ampliato la nostra visione, aprendo un’accademia per formare professionisti nel settore Nails e Beauty. Collaboriamo con i migliori master nazionali e internazionali per offrire corsi di alta qualità, garantendo competenze solide per una carriera di successo.
-                        </p>
-                        <p className="text-white mb-6 leading-relaxed">
-                            Oltre alla formazione, proponiamo trattamenti estetici avanzati e tecnologie innovative per viso e corpo, disponibili anche a noleggio per le professioniste. La nostra accademia è un punto di riferimento per chi vuole trasformare la passione per l’estetica in una professione.                        </p>
-                        <p className="text-white mb-6 leading-relaxed">
-                            Con la stessa passione di sempre, continuiamo a innovare e a supportare chi desidera crescere in questo settore unico e affascinante.                        </p>
+        <section id="aboutUs" className="relative py-24 overflow-hidden min-h-[600px] flex items-center">
+            <div className="absolute inset-0 z-0">
+                <UploadImages publicId={"chisiamo-bg_cgvwwc"} className="w-full h-full object-cover" width={1920} height={1080}/>
+                <div className="absolute inset-0 bg-purple-900/60 backdrop-blur-[2px]"></div>
+            </div>
+
+            <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                    <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 shadow-2xl border border-white/20 text-left">
+                        <span className="text-purple-300 font-bold tracking-widest uppercase text-sm">Storia e Passione</span>
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6">Chi Siamo</h2>
+                        <div className="w-20 h-1.5 bg-purple-400 mb-8 rounded-full"></div>
+                        
+                        <div className="space-y-6 text-stone-100">
+                            <p className="text-xl font-semibold text-white leading-tight">
+                                "La bellezza è un'arte che racconta chi sei."
+                            </p>
+                            <p className="leading-relaxed font-medium">
+                                Dal 2010, Christian e Barbara hanno trasformato la loro passione per l'estetica e il benessere in un projeto dedicato a chi ama il mondo delle unghie e della bellezza.
+                            </p>
+                            <p className="leading-relaxed font-medium">
+                                Hanno iniziato con uno spazio incentrato sulla cura della persona e si sono espansi in um'accademia che forma professionisti con corsi di alta qualidade, in collaborazione con maestri nazionali e internazionali.
+                            </p>
+                            <p className="leading-relaxed font-medium">
+                                Oltre alla formazione, offrono trattamenti estetici avanzati e tecnologie innovative per viso e corpo, inclusi servizi di noleggio. L'accademia è um punto di riferimento per chi desidera trasformare a propria passione per l'estetica in uma carreira di sucesso.
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <UploadImages publicId={"aboutUs_qccfpk"} className="rounded-lg mx-auto" width={400} height={400}/>
+
+                    <div className="hidden lg:block relative">
+                         <div className="absolute -inset-4 bg-purple-400/20 blur-2xl rounded-full"></div>
+                         <UploadImages publicId={"aboutUs_qccfpk"} className="relative rounded-2xl shadow-2xl border-4 border-white transform hover:scale-103 transition-transform duration-500" width={600} height={600}/>
                     </div>
                 </div>
             </div>
