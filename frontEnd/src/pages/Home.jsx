@@ -6,6 +6,8 @@ import TechnologySection from '../components/TechnologySection';
 import CosmeticsSection from '../components/CosmeticsSection';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import AboutUs from '../components/AboutUs';
+import GoogleReviews from '../components/GoogleReviews';
 
 function App() {
   return (
@@ -14,9 +16,11 @@ function App() {
       <main>
         <Hero />
         <ServiceCenter />
+        <AboutUs />
         <EducationSection />
         <TechnologySection />
         <CosmeticsSection />
+        <GoogleReviews />
         <Contact />
       </main>
       <Footer />
