@@ -26,12 +26,12 @@ export default function AboutUs() {
                                 Hanno iniziato con uno spazio incentrato sulla cura della persona e si sono espansi in um'accademia che forma professionisti con corsi di alta qualidade, in collaborazione con maestri nazionali e internazionali.
                             </p>
                             <p className="leading-relaxed font-medium">
-                                Oltre alla formazione, offrono trattamenti estetici avanzati e tecnologie innovative per viso e corpo, inclusi servizi di noleggio. L'accademia è um punto di riferimento per chi desidera trasformare a propria passione per l'estetica in uma carreira di sucesso.
+                                Oltre alla formazione, offrono trattamenti estetici avanzati e tecnologie innovative per viso e corpo, inclusi servizi di noleggio. L'accademia è um punto di riferimento per chi desidera trasformare a propria passione per l'estetica in uma carreira di successo.
                             </p>
                         </div>
                     </div>
 
-                    <div className="hidden lg:block relative">
+                    <div className="flex justify-center">
                          <div className="absolute -inset-4 bg-purple-400/20 blur-2xl rounded-full"></div>
                          <UploadImages publicId={"aboutUs_qccfpk"} className="relative rounded-2xl shadow-2xl border-4 border-white transform hover:scale-103 transition-transform duration-500" width={600} height={600}/>
                     </div>

@@ -8,6 +8,7 @@ import AboutUs from '../components/AboutUs';
 import GoogleReviews from '../components/GoogleReviews';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import NumbersDivider from '../components/NumbersDivider';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <main>
         <Hero />
         <ServiceCenter />
+        <NumbersDivider />
         <AboutUs />
         <EducationSection />
         <TechnologySection />

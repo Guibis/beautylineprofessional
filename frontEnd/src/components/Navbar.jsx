@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Icon } from './Icons';
+import Icon from './Icons';
 import UploadImages from './UploadImages';
 import { Link } from 'react-router-dom';
 
