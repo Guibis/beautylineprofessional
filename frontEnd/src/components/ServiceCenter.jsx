@@ -4,7 +4,7 @@ import UploadImages from "./UploadImages";
 export default function ServiceCenter() {
 
   return (
-    <section id="centroAssistenza" className="py-12 md:py-24 bg-whitesmoke">
+    <section id="centroAssistenza" className="py-12 md:py-24 bg-stone-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="font-display text-4xl md:text-5xl text-purple-400 font-bold">I Nostri Pilastri</h2>

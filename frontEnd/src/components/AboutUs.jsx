@@ -33,7 +33,7 @@ export default function AboutUs() {
 
                     <div className="flex justify-center">
                          <div className="absolute -inset-4 bg-purple-400/20 blur-2xl rounded-full"></div>
-                         <UploadImages publicId={"aboutUs_qccfpk"} className="relative rounded-2xl shadow-2xl border-4 border-white transform hover:scale-103 transition-transform duration-500" width={600} height={600}/>
+                         <UploadImages publicId={"aboutUs_qccfpk"} className="relative rounded-2xl shadow-2xl border-4 border-white transform hover:scale-105 transition-transform duration-500" width={600} height={600}/>
                     </div>
                 </div>
             </div>

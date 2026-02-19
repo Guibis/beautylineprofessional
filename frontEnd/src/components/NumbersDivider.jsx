@@ -1,6 +1,6 @@
-import CountUp from "./ContUp";
+import CountUp from "./CountUp";
 
-export default function Numbers() {
+export default function NumbersDivider() {
     return (
         <section id="numbers" className="py-24 md:py-32 bg-purple-600">
             <div className="max-w-7xl mx-auto px-6 text-center">

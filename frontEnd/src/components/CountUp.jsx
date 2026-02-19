@@ -11,8 +11,11 @@ export default function CountUp({ end, duration = 2000, publicId, title }) {
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true);
+                    if (countRef.current) {
+                        observer.unobserve(countRef.current);
+                    }
                 }
-            },
+            }, 
             { threshold: 0.1 }
         );
 
@@ -26,16 +29,25 @@ export default function CountUp({ end, duration = 2000, publicId, title }) {
     useEffect(() => {
         if (!isVisible) return;
 
+        let frameId;
         let startTimestamp = null;
+        
         const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
             setCount(Math.floor(progress * end));
             if (progress < 1) {
-                window.requestAnimationFrame(step);
+                frameId = window.requestAnimationFrame(step);
             }
         };
-        window.requestAnimationFrame(step);
+        
+        frameId = window.requestAnimationFrame(step);
+
+        return () => {
+            if (frameId) {
+                window.cancelAnimationFrame(frameId);
+            }
+        };
     }, [end, duration, isVisible]);
 
     return (
