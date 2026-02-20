@@ -4,16 +4,10 @@ import ServiceCenter from '../components/ServiceCenter';
 import EducationSection from '../components/EducationSection';
 import TechnologySection from '../components/TechnologySection';
 import CosmeticsSection from '../components/CosmeticsSection';
-import AboutUs from '../components/AboutUs';
-import GoogleReviews from '../components/GoogleReviews';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
-<<<<<<< feature/addAboutUsSection
 import AboutUs from '../components/AboutUs';
 import GoogleReviews from '../components/GoogleReviews';
-=======
-import NumbersDivider from '../components/NumbersDivider';
->>>>>>> main
 
 function App() {
   return (
@@ -22,10 +16,6 @@ function App() {
       <main>
         <Hero />
         <ServiceCenter />
-<<<<<<< feature/addAboutUsSection
-=======
-        <NumbersDivider />
->>>>>>> main
         <AboutUs />
         <EducationSection />
         <TechnologySection />
