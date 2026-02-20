@@ -4,8 +4,11 @@ import ServiceCenter from '../components/ServiceCenter';
 import EducationSection from '../components/EducationSection';
 import TechnologySection from '../components/TechnologySection';
 import CosmeticsSection from '../components/CosmeticsSection';
+import AboutUs from '../components/AboutUs';
+import GoogleReviews from '../components/GoogleReviews';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import NumbersDivider from '../components/NumbersDivider';
 
 function App() {
   return (
@@ -14,9 +17,12 @@ function App() {
       <main>
         <Hero />
         <ServiceCenter />
+        <NumbersDivider />
+        <AboutUs />
         <EducationSection />
         <TechnologySection />
         <CosmeticsSection />
+        <GoogleReviews />
         <Contact />
       </main>
       <Footer />

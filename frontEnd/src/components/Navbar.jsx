@@ -3,7 +3,6 @@ import Icon from './Icons';
 import UploadImages from './UploadImages';
 import { Link } from 'react-router-dom';
 
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
@@ -34,7 +33,6 @@ export default function Navbar() {
         <Link to="/" className="flex items-center gap-3">
           <UploadImages publicId={"logoBeauty_rtip32"} width={60} height={60}/>
         </Link>
-
 
         <div className="hidden md:flex items-center gap-8">
           <a href="#centroAssistenza" className="text-stone-600 hover:text-purple-400 transition-colors font-medium">Corsi</a>
