@@ -2,10 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import Icon from './Icons';
 import UploadImages from './UploadImages';
 import { Link } from 'react-router-dom';
+import { useAuthStore } from '../store/authStore';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
+  const { isLoggedIn } = useAuthStore();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -36,7 +38,17 @@ export default function Navbar() {
           <a href="#tecnologia" className="text-stone-600 hover:text-purple-400 transition-colors font-medium">Noleggio</a>
           <a href="#prodotti" className="text-stone-600 hover:text-purple-400 transition-colors font-medium">Prodotti</a>
           <a href="#contatti" className="text-stone-600 hover:text-purple-400 transition-colors font-medium">Contatti</a>
-          <Link to="/register" className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors">Registrazione</Link>
+          
+          {isLoggedIn ? (
+            <div className="flex items-center gap-4">
+               <Link to="/account" className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors">Il mio account</Link>
+            </div>
+          ) : (
+            <div className="flex items-center gap-4">
+                <Link to="/auth?mode=login" className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors">Accedi</Link>
+                <Link to="/auth?mode=register" className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors">Registrati</Link>
+            </div>
+          )}
         </div>
 
         <div className="md:hidden" ref={menuRef}>
@@ -50,7 +62,19 @@ export default function Navbar() {
             <a href="#tecnologia" className="text-stone-600 hover:text-purple-600 font-medium">Noleggio</a>
             <a href="#prodotti" className="text-stone-600 hover:text-purple-600 font-medium">Prodotti</a>
             <a href="#contatti" className="text-stone-600 hover:text-purple-600 font-medium">Contatti</a>
-            <Link to="/register" className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors text-center w-full">Registrazione</Link>
+            
+            <div className="border-t border-stone-100 pt-4 flex flex-col gap-3">
+               {isLoggedIn ? (
+                  <>
+                    <Link to="/account" className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors text-center w-full">Il mio account</Link>
+                  </>
+               ) : (
+                  <>
+                     <Link to="/auth?mode=login" className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors text-center w-full">Accedi</Link>
+                     <Link to="/auth?mode=register" className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors text-center w-full">Registrati</Link>
+                  </>
+               )}
+            </div>
           </div>
         )}
         </div>
