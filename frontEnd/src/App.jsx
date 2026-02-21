@@ -1,12 +1,23 @@
-import { Routes, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home';
-import Registro from './pages/Registro';
+import AuthPage from './pages/AuthPage';
+import AccountPage from './pages/AccountPage';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/auth",
+    element: <AuthPage />,
+  },
+  {
+    path: "/account",
+    element: <AccountPage />,
+  }
+]);
 
 export default function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/registro" element={<Registro />} />
-    </Routes>
-  );
+  return <RouterProvider router={router} />;
 }
