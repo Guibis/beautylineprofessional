@@ -4,7 +4,7 @@ export default function AboutUs() {
     return (
         <section id="chi-siamo" className="relative py-24 overflow-hidden min-h-[600px] flex items-center">
             <div className="absolute inset-0 z-0">
-                <UploadImages publicId={"chisiamo-bg_cgvwwc"} className="w-full h-full object-cover" width={1920} height={1080} alt="" ariaHidden={true}/>
+                <UploadImages publicId={"chisiamo-bg_cgvwwc"} className="w-full h-full object-cover" width={1920} height={1080} alt="chi siamo image" ariaHidden={true}/>
                 <div className="absolute inset-0 bg-purple-900/60 backdrop-blur-[2px]"></div>
             </div>
 
