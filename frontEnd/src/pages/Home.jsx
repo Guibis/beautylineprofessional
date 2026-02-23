@@ -8,10 +8,13 @@ import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import AboutUs from '../components/AboutUs';
 import GoogleReviews from '../components/GoogleReviews';
+import NumbersDivider from '../components/NumbersDivider';
+import { ScrollRestoration } from 'react-router-dom';
 
 function App() {
   return (
     <div className="min-h-screen bg-stone-50 text-stone-800 font-body">
+      <ScrollRestoration />
       <Navbar />
       <main>
         <Hero />
