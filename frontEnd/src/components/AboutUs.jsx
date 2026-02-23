@@ -1,6 +1,5 @@
 import UploadImages from "./UploadImages";
 
-
 export default function AboutUs() {
     return (
         <section id="chi-siamo" className="relative py-24 overflow-hidden min-h-[600px] flex items-center">
