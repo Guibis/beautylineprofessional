@@ -32,11 +32,11 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          <a href="#centroAssistenza" className="text-stone-600 text-center hover:text-purple-400 transition-colors font-medium">Corsi</a>
-          <a href="#chi-siamo" className="text-stone-600 text-center hover:text-purple-400 transition-colors font-medium">Chi Siamo</a>
-          <a href="#tecnologia" className="text-stone-600 text-center hover:text-purple-400 transition-colors font-medium">Noleggio</a>
-          <a href="#prodotti" className="text-stone-600 text-center hover:text-purple-400 transition-colors font-medium">Prodotti</a>
-          <a href="#contatti" className="text-stone-600 text-center hover:text-purple-400 transition-colors font-medium">Contatti</a>
+          <Link to="/corsi" className="text-stone-600 text-center hover:text-purple-400 transition-colors font-medium">Corsi</Link>
+          <Link to="/#chi-siamo" className="text-stone-600 text-center hover:text-purple-400 transition-colors font-medium">Chi Siamo</Link>
+          <Link to="/attrezzature" className="text-stone-600 text-center hover:text-purple-400 transition-colors font-medium">Noleggio</Link>
+          <Link to="/prodotti" className="text-stone-600 text-center hover:text-purple-400 transition-colors font-medium">Prodotti</Link>
+          <Link to="/#contatti" className="text-stone-600 text-center hover:text-purple-400 transition-colors font-medium">Contatti</Link>
           
           {isLoggedIn ? (
             <div className="flex items-center gap-4">
@@ -44,8 +44,8 @@ export default function Navbar() {
             </div>
           ) : (
             <div className="flex items-center gap-4">
-                <Link to="/auth?mode=login" className="px-6 py-2.5 bg-purple-600 text-white text-center rounded-full font-medium hover:bg-purple-700 transition-colors">Accedi</Link>
-                <Link to="/auth?mode=register" className="px-6 py-2.5 bg-purple-600 text-white text-center rounded-full font-medium hover:bg-purple-700 transition-colors">Registrati</Link>
+                <Link to="/autorizzazione?mode=login" className="px-6 py-2.5 bg-purple-600 text-white text-center rounded-full font-medium hover:bg-purple-700 transition-colors">Accedi</Link>
+                <Link to="/autorizzazione?mode=register" className="px-6 py-2.5 bg-purple-600 text-white text-center rounded-full font-medium hover:bg-purple-700 transition-colors">Registrati</Link>
             </div>
           )}
         </div>
@@ -56,11 +56,11 @@ export default function Navbar() {
           </button>
           {isOpen && (
           <div className="md:hidden bg-white border-t border-stone-100 shadow-lg absolute top-full left-0 right-0 py-4 px-6 flex flex-col gap-4">
-            <a href="#centroAssistenza" className="text-stone-600 hover:text-purple-600 font-medium">Corsi</a>
-            <a href="#chi-siamo" className="text-stone-600 hover:text-purple-600 font-medium">Chi Siamo</a>
-            <a href="#tecnologia" className="text-stone-600 hover:text-purple-600 font-medium">Noleggio</a>
-            <a href="#prodotti" className="text-stone-600 hover:text-purple-600 font-medium">Prodotti</a>
-            <a href="#contatti" className="text-stone-600 hover:text-purple-600 font-medium">Contatti</a>
+            <Link to="/corsi" className="text-stone-600 hover:text-purple-600 font-medium">Corsi</Link>
+            <Link to="/#chi-siamo" className="text-stone-600 hover:text-purple-600 font-medium">Chi Siamo</Link>
+            <Link to="/attrezzature" className="text-stone-600 hover:text-purple-600 font-medium">Noleggio</Link>
+            <Link to="/prodotti" className="text-stone-600 hover:text-purple-600 font-medium">Prodotti</Link>
+            <Link to="/#contatti" className="text-stone-600 hover:text-purple-600 font-medium">Contatti</Link>
             
             <div className="border-t border-stone-100 pt-4 flex flex-col gap-3">
                {isLoggedIn ? (
@@ -69,8 +69,8 @@ export default function Navbar() {
                   </>
                ) : (
                   <>
-                     <Link to="/auth?mode=login" className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors text-center w-full">Accedi</Link>
-                     <Link to="/auth?mode=register" className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors text-center w-full">Registrati</Link>
+                     <Link to="/autorizzazione?mode=login" className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors text-center w-full">Accedi</Link>
+                     <Link to="/autorizzazione?mode=register" className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors text-center w-full">Registrati</Link>
                   </>
                )}
             </div>
