@@ -199,7 +199,14 @@ const login = async (req, res) => {
 
         const token = jwt.sign(payload, secret, { expiresIn: "1h" });
 
-        res.status(200).json({ token });
+        res.status(200).json({ 
+            token,
+            user: {
+                id: user._id,
+                email: user.email,
+                name: user.name
+            }
+        });
     } catch (err) {
         console.error(err);
         console.error(err);

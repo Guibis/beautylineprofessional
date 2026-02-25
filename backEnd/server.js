@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const Router = require("./routes/user.router");
@@ -12,7 +13,6 @@ app.use(express.json());
 app.use(morgan("common"));
 app.use("/api", Router);
 
-
 require("dotenv").config();
 connectDB();
 
@@ -23,4 +23,3 @@ if (require.main === module) {
 }
 
 module.exports = app;
-

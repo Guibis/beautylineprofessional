@@ -27,7 +27,7 @@ export default function AuthForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
@@ -36,8 +36,12 @@ export default function AuthForm() {
         setError('Compila tutti i campi per accedere.');
         return;
       }
-      login(formData.email, formData.password);
-      navigate('/');
+      const result = await login(formData.email, formData.password);
+      if (result.success) {
+        navigate('/');
+      } else {
+        setError(result.message);
+      }
     } else {
       if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
         setError('Compila tutti i campi per registrarti.');
@@ -47,8 +51,12 @@ export default function AuthForm() {
         setError('Le password non coincidono.');
         return;
       }
-      register(formData.name, formData.email, formData.password);
-      navigate('/');
+      const result = await register(formData.name, formData.email, formData.password);
+      if (result.success) {
+        navigate('/');
+      } else {
+        setError(result.message);
+      }
     }
   };
 
