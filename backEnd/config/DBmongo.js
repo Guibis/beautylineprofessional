@@ -1,34 +1,30 @@
 const mongoose = require('mongoose');
 const dns = require('dns');
 
-// Fix for ECONNREFUSED on some Windows systems with Node v17+
-if (dns.setDefaultResultOrder) {
-    dns.setDefaultResultOrder('ipv4first');
+if (process.env.NODE_ENV !== 'production') {
+    if (dns.setDefaultResultOrder) {
+        dns.setDefaultResultOrder('ipv4first');
+    }
+    dns.setServers(['8.8.8.8', '8.8.4.4']);
 }
-
-// Case the system DNS fails to resolve SRV records (common in some networks)
-dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 const connectDB = async () => {
     try {
-        const conn = await mongoose.connect(process.env.MONGODB_URI, {
+        const options = {
             serverSelectionTimeoutMS: 5000,
             connectTimeoutMS: 10000,
-            family: 4 // Try to force IPv4
-        });
+        };
+        
+        if (process.env.NODE_ENV !== 'production') {
+            options.family = 4;
+        }
+
+        const conn = await mongoose.connect(process.env.MONGODB_URI, options);
 
         console.log(`MongoDB Connected: ${conn.connection.host}`);
 
     } catch (error) {
-
-        if (mongoose?.Error?.MongooseError && error instanceof mongoose.Error.MongooseError) {
-            console.error(`Mongoose Error: ${error.message}`);
-            if (process.env.NODE_ENV !== 'test') process.exit(1);
-            throw error;
-        }
-
-        console.error(`Error: ${error.message}`);
-        if (process.env.NODE_ENV !== 'test') process.exit(1);
+        console.error(`MongoDB Connection Error: ${error.message}`);
         throw error;
     }
 };
