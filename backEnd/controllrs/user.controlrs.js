@@ -76,7 +76,7 @@ const createUser = async (req, res) => {
 
         if (err.code === DUPLICATED_EMAIL_CODE) {
             return res.status(409).json({
-                message: "Email already exists"
+                message: "Email già registrata"
             });
         }
 
@@ -130,7 +130,7 @@ const updateUser = async (req, res) => {
     
         if (err.code === DUPLICATED_EMAIL_CODE) {
             return res.status(409).json({
-                message: "Email already exists"
+                message: "Email già registrata"
             });
         }
     

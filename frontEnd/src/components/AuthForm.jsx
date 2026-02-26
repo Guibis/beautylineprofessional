@@ -47,32 +47,42 @@ export default function AuthForm() {
     setError('');
     setStatus({ state: 'submitting', message: '' });
 
-    if (isLogin) {
-      if (!formData.email || !formData.password) {
-        setError('Compila tutti i campi per accedere.');
-        return;
-      }
-      const result = await login(formData.email, formData.password);
-      if (result.success) {
-        navigate('/');
+    try {
+      if (isLogin) {
+        if (!formData.email || !formData.password) {
+          setError('Compila tutti i campi per accedere.');
+          setStatus({ state: 'idle', message: '' });
+          return;
+        }
+        const result = await login(formData.email, formData.password);
+        if (result.success) {
+          navigate('/');
+        } else {
+          setError(result.message);
+          setStatus({ state: 'idle', message: '' });
+        }
       } else {
-        setError(result.message);
+        if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
+          setError('Compila tutti i campi per registrarti.');
+          setStatus({ state: 'idle', message: '' });
+          return;
+        }
+        if (formData.password !== formData.confirmPassword) {
+          setError('Le password non coincidono.');
+          setStatus({ state: 'idle', message: '' });
+          return;
+        }
+        const result = await register(formData.name, formData.email, formData.password);
+        if (result.success) {
+          navigate('/');
+        } else {
+          setError(result.message);
+          setStatus({ state: 'idle', message: '' });
+        }
       }
-    } else {
-      if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
-        setError('Compila tutti i campi per registrarti.');
-        return;
-      }
-      if (formData.password !== formData.confirmPassword) {
-        setError('Le password non coincidono.');
-        return;
-      }
-      const result = await register(formData.name, formData.email, formData.password);
-      if (result.success) {
-        navigate('/');
-      } else {
-        setError(result.message);
-      }
+    } catch {
+      setError('Si è verificato um errore imprevisto.');
+      setStatus({ state: 'idle', message: '' });
     }
   };
 
