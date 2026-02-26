@@ -1,7 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:3000/api').replace(/\/$/, "");
+const API_ORIGIN = (import.meta.env.VITE_API_URL || 'http://localhost:3000').replace(/\/$/, "");
+const API_URL = `${API_ORIGIN}/api`;
 
 export const useAuthStore = create(
   persist(
@@ -50,8 +51,9 @@ export const useAuthStore = create(
           }
 
           set({ 
-            isLoggedIn: true, 
-            user: data
+            isLoggedIn: Boolean(data.token),
+            token: data.token || null,
+            user: data.user || data
           });
           return { success: true };
         } catch (err) {
@@ -88,7 +90,7 @@ export const useAuthStore = create(
             throw new Error(data.message || 'Errore durante l\'aggiornamento del profilo');
           }
 
-          set((state) => ({ user: { ...state.user, name, email } }));
+          set(() => ({ user: data }));
           return { success: true, message: 'Profilo aggiornato con successo' };
         } catch (err) {
           return { success: false, message: err.message };

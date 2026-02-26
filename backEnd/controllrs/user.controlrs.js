@@ -151,13 +151,6 @@ const deleteUser = async (req, res) => {
         res.status(200).send("User deleted successfully");
 
     } catch (err) {
-
-
-        if (err.name === "CastError") {
-         return res.status(400).json({ message: "ID utente non valido" });
-        }
-        
-
         if (err.name === "CastError") {
             return res.status(400).json({
                 message: "ID utente non valido"

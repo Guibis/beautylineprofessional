@@ -21,18 +21,6 @@ export default function AuthForm() {
   });
 
   const [error, setError] = useState('');
-  const [prevMode, setPrevMode] = useState(mode);
-
-  if (mode !== prevMode) {
-    setPrevMode(mode);
-    setFormData({
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    });
-    setError('');
-  }
 
   const handleChange = (e) => {
     setError('');
