@@ -5,7 +5,7 @@ const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:3000/api').re
 
 export const useAuthStore = create(
   persist(
-    (set) => ({
+    (set, get) => ({
       isLoggedIn: false,
       user: null,
       token: null,
@@ -49,8 +49,6 @@ export const useAuthStore = create(
             throw new Error(data.message || 'Errore durante la registrazione');
           }
 
-          // After registration, we login automatically with the user data
-          // (Backend createUser currently returns the saved user without password)
           set({ 
             isLoggedIn: true, 
             user: data
@@ -66,8 +64,35 @@ export const useAuthStore = create(
         localStorage.removeItem('auth-storage');
       },
 
-      updateUser: (newData) => {
-        set((state) => ({ user: { ...state.user, ...newData } }));
+      updateUser: async (name, email) => {
+        const { user, token } = get();
+        const userId = user?._id || user?.id;
+
+        if (!userId || !token) {
+          return { success: false, message: 'Non sei autenticato o manca ID utente.' };
+        }
+
+        try {
+          const response = await fetch(`${API_URL}/user/${userId}`, {
+            method: 'PUT',
+            headers: { 
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ name, email }),
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.message || 'Errore durante l\'aggiornamento del profilo');
+          }
+
+          set((state) => ({ user: { ...state.user, name, email } }));
+          return { success: true, message: 'Profilo aggiornato con successo' };
+        } catch (err) {
+          return { success: false, message: err.message };
+        }
       }
     }),
     {

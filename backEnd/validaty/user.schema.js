@@ -16,6 +16,9 @@ const userSchema = z.object({
         .min(8, "Password must be at least 8 characters long")
 });
 
+const updateUserSchema = userSchema.partial();
+
 module.exports = {
-    userSchema
+    userSchema,
+    updateUserSchema
 };

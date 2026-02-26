@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuthStore } from '../store/authStore';
-import { useNavigate, useSearchParams, Link } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { LoaderCircle } from 'lucide-react';
 
 export default function AuthForm() {
   const [searchParams] = useSearchParams();
@@ -10,6 +11,8 @@ export default function AuthForm() {
   const { login, register } = useAuthStore();
   const navigate = useNavigate();
 
+  const [status, setStatus] = useState({ state: 'idle', message: '' });
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,6 +21,18 @@ export default function AuthForm() {
   });
 
   const [error, setError] = useState('');
+  const [prevMode, setPrevMode] = useState(mode);
+
+  if (mode !== prevMode) {
+    setPrevMode(mode);
+    setFormData({
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    });
+    setError('');
+  }
 
   const handleChange = (e) => {
     setError('');
@@ -30,6 +45,7 @@ export default function AuthForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setStatus({ state: 'submitting', message: '' });
 
     if (isLogin) {
       if (!formData.email || !formData.password) {
@@ -129,8 +145,19 @@ export default function AuthForm() {
             </div>
           )}
 
-          <button type="submit" className="w-full py-4 bg-purple-600 text-white rounded-xl font-medium hover:bg-purple-700 transition-colors shadow-lg shadow-purple-200">
-            {isLogin ? 'Accedi' : 'Registrati'}
+          <button 
+            type="submit" 
+            disabled={status.state === 'submitting'}
+            className="w-full py-4 bg-purple-600 text-white rounded-xl font-medium hover:bg-purple-700 transition-colors shadow-lg shadow-purple-200"
+          >
+            {status.state === 'submitting' ? (
+              <div className="flex items-center justify-center">
+                <span className="mr-2">Connettendo...</span>
+                <LoaderCircle className="w-5 h-5 animate-spin" aria-hidden="true"/>
+              </div>
+            ) : (
+              isLogin ? 'Accedi' : 'Registrati'
+            )}
           </button>
         </form>
       </div>
