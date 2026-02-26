@@ -11,7 +11,6 @@ export const useCartStore = create(
           const existingItem = state.items.find((item) => item.id === product.id);
 
           if (existingItem) {
-            // Update quantity if item already exists
             return {
               items: state.items.map((item) =>
                 item.id === product.id
@@ -21,7 +20,6 @@ export const useCartStore = create(
             };
           }
 
-          // Add new item with quantity 1
           return { items: [...state.items, { ...product, quantity: 1 }] };
         });
       },
@@ -44,13 +42,12 @@ export const useCartStore = create(
         set({ items: [] });
       },
 
-      // Helper selector to get total item count
       getTotalItems: () => {
         return get().items.reduce((total, item) => total + item.quantity, 0);
       },
     }),
     {
-      name: 'beautyline-cart-storage', // unique name for localStorage key
+      name: 'beautyline-cart-storage',
     }
   )
 );

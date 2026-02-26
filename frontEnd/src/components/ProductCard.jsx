@@ -7,10 +7,7 @@ const ProductCard = ({ id, title, description, price, publicId }) => {
   const addItem = useCartStore((state) => state.addItem);
 
   const handleAddToCart = () => {
-    // Pass the minimal necessary product info to the cart
     addItem({ id, title, price, publicId });
-    
-    // Provide visual feedback for 2 seconds
     setIsAdded(true);
     setTimeout(() => {
       setIsAdded(false);
@@ -46,11 +43,11 @@ const ProductCard = ({ id, title, description, price, publicId }) => {
             disabled={isAdded}
             className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 shadow-md flex items-center gap-2
               ${isAdded 
-                ? 'bg-green-500 text-white shadow-green-500/20 scale-100 cursor-default' 
+                ? 'bg-purple-500 text-white cursor-progress' 
                 : 'bg-purple-600 hover:bg-purple-700 hover:scale-105 text-white hover:shadow-lg active:scale-95'
               }`}
           >
-            {isAdded ? "Aggiunto ✓" : "Aggiungi"}
+            {isAdded ? "Aggiunto!" : "Aggiungi"}
           </button>
         </div>
       </div>
