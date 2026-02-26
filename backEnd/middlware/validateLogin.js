@@ -5,7 +5,7 @@ const validateLogin = (req, res, next) => {
 
     if (!result.success) {
         return res.status(400).json({
-            message: "Login data is invalid",
+            message: "I dati di accesso non sono validi",
             errors: result.error.issues.map(err => ({
                 field: err.path[0],
                 message: err.message
