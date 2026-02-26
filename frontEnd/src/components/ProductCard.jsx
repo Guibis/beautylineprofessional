@@ -26,7 +26,7 @@ const ProductCard = ({ title, description, price, publicId }) => {
             {price}
           </span>
           <button className="bg-purple-600 hover:bg-purple-700 hover:scale-105 text-white px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-lg active:scale-95">
-            Add to Cart
+            Aggiungi al Carrello
           </button>
         </div>
       </div>
