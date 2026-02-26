@@ -86,4 +86,3 @@ export const COURSES = [
     { title: "Ciglia e Sopracciglia", desc: "Extension ciglia, laminazione, design sopracciglia e micropigmentazione." },
     { title: "Trattamenti Viso", desc: "Pulizia del viso, peeling, protocolli anti-età e armonizzazione facciale." }
 ]
-
