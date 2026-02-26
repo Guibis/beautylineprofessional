@@ -1,6 +1,22 @@
+import { useState } from "react";
 import UploadImages from "./UploadImages";
+import { useCartStore } from "../store/cartStore";
 
-const ProductCard = ({ title, description, price, publicId }) => {
+const ProductCard = ({ id, title, description, price, publicId }) => {
+  const [isAdded, setIsAdded] = useState(false);
+  const addItem = useCartStore((state) => state.addItem);
+
+  const handleAddToCart = () => {
+    // Pass the minimal necessary product info to the cart
+    addItem({ id, title, price, publicId });
+    
+    // Provide visual feedback for 2 seconds
+    setIsAdded(true);
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 2000);
+  };
+
   return (
     <div className="bg-white rounded-2xl p-6 shadow-md border-t-4 border-b-4 border-purple-600 hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
       <div className="mb-6 relative overflow-hidden rounded-xl bg-purple-50 group">
@@ -25,8 +41,16 @@ const ProductCard = ({ title, description, price, publicId }) => {
           <span className="text-2xl font-bold text-purple-600">
             {price}
           </span>
-          <button className="bg-purple-600 hover:bg-purple-700 hover:scale-105 text-white px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-lg active:scale-95">
-            Add to Cart
+          <button 
+            onClick={handleAddToCart}
+            disabled={isAdded}
+            className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 shadow-md flex items-center gap-2
+              ${isAdded 
+                ? 'bg-green-500 text-white shadow-green-500/20 scale-100 cursor-default' 
+                : 'bg-purple-600 hover:bg-purple-700 hover:scale-105 text-white hover:shadow-lg active:scale-95'
+              }`}
+          >
+            {isAdded ? "Aggiunto ✓" : "Aggiungi"}
           </button>
         </div>
       </div>
@@ -35,3 +59,4 @@ const ProductCard = ({ title, description, price, publicId }) => {
 };
 
 export default ProductCard;
+
