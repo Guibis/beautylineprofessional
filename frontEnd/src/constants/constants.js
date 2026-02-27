@@ -105,7 +105,7 @@ export const MOCK_PRODUCTS = [
     {
         id: 3,
         title: "Crema Antirughe",
-        description: "Combattere attivamente i segni dell'invecchiamento. Grazie alla sua potente azione rigenerante, leviga le piccole rughe e restituisce compattezza e giovinezza al viso.",
+        description: "Combatte attivamente i segni dell'invecchiamento. Grazie alla sua potente azione rigenerante, leviga le piccole rughe e restituisce compattezza e giovinezza al viso.",
         price: 50.00,
         publicId: "crema-antiru_cnkbdj"
     },

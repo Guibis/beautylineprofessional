@@ -37,7 +37,7 @@ export default function Navbar() {
           <a href="#centroAssistenza" className="relative inline-block text-gray-800 hover:text-purple-600 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-purple-600 after:transition-all after:duration-250 hover:after:w-full">Corsi</a>
           <a href="#chi-siamo" className="relative inline-block text-gray-800 hover:text-purple-600 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-purple-600 after:transition-all after:duration-250 hover:after:w-full">Chi Siamo</a>
           <a href="#tecnologia" className="relative inline-block text-gray-800 hover:text-purple-600 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-purple-600 after:transition-all after:duration-250 hover:after:w-full">Noleggio</a>
-          <a href="/prodotti" className="relative inline-block text-gray-800 hover:text-purple-600 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-purple-600 after:transition-all after:duration-250 hover:after:w-full">Prodotti</a>
+          <Link to="/prodotti" className="relative inline-block text-gray-800 hover:text-purple-600 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-purple-600 after:transition-all after:duration-250 hover:after:w-full">Prodotti</Link>
           <a href="#contatti" className="relative inline-block text-gray-800 hover:text-purple-600 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-purple-600 after:transition-all after:duration-250 hover:after:w-full">Contatti</a>
           
           <div className="flex items-center gap-6 border-l border-stone-200 pl-6">
@@ -79,7 +79,7 @@ export default function Navbar() {
               <a href="#centroAssistenza" className="text-stone-600 hover:text-purple-600 font-medium">Corsi</a>
               <a href="#chi-siamo" className="text-stone-600 hover:text-purple-600 font-medium">Chi Siamo</a>
               <a href="#tecnologia" className="text-stone-600 hover:text-purple-600 font-medium">Noleggio</a>
-              <a href="/prodotti" className="text-stone-600 hover:text-purple-600 font-medium">Prodotti</a>
+              <Link to="/prodotti" className="text-stone-600 hover:text-purple-600 font-medium">Prodotti</Link>
               <a href="#contatti" className="text-stone-600 hover:text-purple-600 font-medium">Contatti</a>
               
               <div className="border-t border-stone-100 pt-4 flex flex-col gap-3">

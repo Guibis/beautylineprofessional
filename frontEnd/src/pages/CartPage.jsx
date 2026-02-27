@@ -32,7 +32,7 @@ export default function CartPage() {
                 <ShoppingBag className="w-10 h-10 text-purple-400" />
               </div>
               <h2 className="text-2xl font-serif text-stone-900 mb-4">Il tuo carrello è vuoto</h2>
-              <p className="text-stone-600 mb-8">Sembra que não tenha pedido nada ainda. Scopri os nossos excelentes produtos!</p>
+              <p className="text-stone-600 mb-8">Sembra che tu non abbia ordinato nulla ancora. Scopri i nostri eccellenti prodotti!</p>
               <Link 
                 to="/" 
                 className="inline-block px-8 py-4 bg-purple-600 text-white rounded-full font-bold hover:bg-purple-700 transition-colors shadow-lg shadow-purple-200"
@@ -67,7 +67,7 @@ export default function CartPage() {
                     </div>
                   </div>
 
-                  <button className="w-full py-4 bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 hover:scale-102 transition-all shadow-xl mb-4">
+                  <button className="w-full py-4 bg-stone-900 text-white rounded-full font-bold hover:bg-stone-800 hover:scale-105 transition-all shadow-xl mb-4">
                     Procedi al checkout
                   </button>
                   <p className="text-[11px] text-stone-400 text-center uppercase tracking-widest font-bold">
