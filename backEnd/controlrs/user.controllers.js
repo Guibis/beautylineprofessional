@@ -16,7 +16,7 @@ const getUsers = async (req, res) => {
 
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: "Error fetching users" });
+        res.status(500).json({ message: "Errore durante il recupero degli utenti" });
     }
 }
 
@@ -26,7 +26,7 @@ const getUserById = async (req, res) => {
         const user = await User.findById(req.params.id).select('-password');
 
         if (!user) {
-            return res.status(404).send({ message: "User not found" });
+            return res.status(404).send({ message: "Utente non trovato" });
         }
 
 
@@ -38,10 +38,10 @@ const getUserById = async (req, res) => {
       console.error(err);
 
       if (err.name === "CastError") {
-        return res.status(400).json({ message: "Invalid user ID" });
+        return res.status(400).json({ message: "ID utente non valido" });
       }
 
-      res.status(500).json({ message: "Error fetching user" });
+      res.status(500).json({ message: "Errore durante il recupero dell'utente" });
   }
 }
 
@@ -69,19 +69,19 @@ const createUser = async (req, res) => {
 
         if (err.name === "ValidationError") {
             return res.status(400).json({
-                message: "Invalid user data",
+                message: "Dati utente non validi",
                 details: err.errors
             });
         }
 
         if (err.code === DUPLICATED_EMAIL_CODE) {
             return res.status(409).json({
-                message: "Email already exists"
+                message: "Email già registrata"
             });
         }
 
         console.error(err);
-        return res.status(500).json({ message: "Error creating user" });
+        return res.status(500).json({ message: "Errore durante la creazione dell'utente" });
     }
 }
 
@@ -110,7 +110,7 @@ const updateUser = async (req, res) => {
 
 
         if (!result) {
-            return res.status(404).send({ message: "User not found" });
+            return res.status(404).send({ message: "Utente non trovato" });
         }
 
         res.status(200).json(result);
@@ -119,22 +119,22 @@ const updateUser = async (req, res) => {
 
         if (err.name === "ValidationError") {
             return res.status(400).json({
-                message: "Invalid data",
+                message: "Dati non validi",
                 details: err.errors
             });
         }
 
         if (err.name === "CastError") {
-          return res.status(400).json({ message: "Invalid user ID" });
+          return res.status(400).json({ message: "ID utente non valido" });
         }
     
         if (err.code === DUPLICATED_EMAIL_CODE) {
             return res.status(409).json({
-                message: "Email already exists"
+                message: "Email già registrata"
             });
         }
     
-        return res.status(500).json({ message: "Internal error" });
+        return res.status(500).json({ message: "Errore interno del server" });
     }
 }
 
@@ -145,26 +145,19 @@ const deleteUser = async (req, res) => {
         const result = await User.findByIdAndDelete(req.params.id);
 
         if (!result) {
-            return res.status(404).send({ message: "User not found" });
+            return res.status(404).send({ message: "Utente non trovato" });
         }
 
         res.status(200).send("User deleted successfully");
 
     } catch (err) {
-
-
-        if (err.name === "CastError") {
-         return res.status(400).json({ message: "Invalid user ID" });
-        }
-        
-
         if (err.name === "CastError") {
             return res.status(400).json({
-                message: "Invalid user ID"
+                message: "ID utente non valido"
             });
         }
         console.error(err);
-        res.status(500).json({ message: "Error deleting user" });
+        res.status(500).json({ message: "Errore durante l'eliminazione dell'utente" });
     }
 }
 
@@ -175,13 +168,13 @@ const login = async (req, res) => {
         const user = await User.findOne({ email });
 
         if (!user) {
-            return res.status(401).json({ message: "Invalid credentials" });
+            return res.status(401).json({ message: "Credenziali non valide" });
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
         if (!isPasswordValid) {
-            return res.status(401).json({ message: "Invalid credentials" });
+            return res.status(401).json({ message: "Credenziali non valide" });
         }
 
         const payload = {
@@ -194,16 +187,23 @@ const login = async (req, res) => {
 
         if (!secret) {
             console.error("JWT_SECRET environment variable is not defined");
-            return res.status(500).json({ message: "Internal authentication error" });
+            return res.status(500).json({ message: "Errore di autenticazione interno" });
         }
 
         const token = jwt.sign(payload, secret, { expiresIn: "1h" });
 
-        res.status(200).json({ token });
+        res.status(200).json({ 
+            token,
+            user: {
+                id: user._id,
+                email: user.email,
+                name: user.name
+            }
+        });
     } catch (err) {
         console.error(err);
         console.error(err);
-        res.status(500).json({ message: "Error during login" });
+        res.status(500).json({ message: "Errore durante il login" });
     }
 }
 
