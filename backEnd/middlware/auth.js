@@ -4,7 +4,7 @@ const auth = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: "Non autorizzato" });
   }
 
   const token = authHeader.split(" ")[1];
@@ -14,7 +14,7 @@ const auth = (req, res, next) => {
 
     if (!secret) {
       console.error("JWT_SECRET environment variable is not defined");
-      return res.status(500).json({ message: "Internal authentication error" });
+      return res.status(500).json({ message: "Errore di autenticazione interno" });
     }
 
     const decoded = jwt.verify(token, secret);
@@ -23,9 +23,8 @@ const auth = (req, res, next) => {
 
   } catch (err) {
     console.error(err);
-    return res.status(401).json({ message: "Invalid token" });
+    return res.status(401).json({ message: "Token non valido" });
   }
 };
 
 module.exports = auth;
-
