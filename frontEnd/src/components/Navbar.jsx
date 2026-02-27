@@ -54,11 +54,12 @@ export default function Navbar() {
               <Link to="/account" className="px-6 py-2.5 bg-purple-600 text-white text-center rounded-full font-medium hover:bg-purple-700 transition-colors">Il mio account</Link>
             ) : (
               <div className="flex items-center gap-4">
-                  <Link to="/auth?mode=login" className="px-6 py-2.5 bg-purple-600 text-white text-center rounded-full font-medium hover:bg-purple-700 transition-colors">Accedi</Link>
-                  <Link to="/auth?mode=register" className="px-6 py-2.5 bg-purple-600 text-white text-center rounded-full font-medium hover:bg-purple-700 transition-colors">Registrati</Link>
+                  <Link to="/autorizzazione?mode=login" className="px-6 py-2.5 bg-purple-600 text-white text-center rounded-full font-medium hover:bg-purple-700 transition-colors">Accedi</Link>
+                  <Link to="/autorizzazione?mode=register" className="px-6 py-2.5 bg-purple-600 text-white text-center rounded-full font-medium hover:bg-purple-700 transition-colors">Registrati</Link>
               </div>
             )}
           </div>
+        </div>
 
         <div className="md:hidden flex items-center gap-4" ref={menuRef}>
           <Link to="/carrello" className="relative p-2 text-stone-600 hover:text-purple-600 transition-colors" aria-label="Carrello">
@@ -75,28 +76,28 @@ export default function Navbar() {
           
           {isOpen && (
           <div className="md:hidden bg-white border-t border-stone-100 shadow-lg absolute top-full left-0 right-0 py-4 px-6 flex flex-col gap-4">
-            <Link to="/corsi" className="text-stone-600 hover:text-purple-600 font-medium">Corsi</Link>
-            <Link to="/#chi-siamo" className="text-stone-600 hover:text-purple-600 font-medium">Chi Siamo</Link>
-            <Link to="/attrezzature" className="text-stone-600 hover:text-purple-600 font-medium">Noleggio</Link>
-            <Link to="/prodotti" className="text-stone-600 hover:text-purple-600 font-medium">Prodotti</Link>
-            <Link to="/#contatti" className="text-stone-600 hover:text-purple-600 font-medium">Contatti</Link>
+            <Link to="/corsi" onClick={() => setIsOpen(false)} className="text-stone-600 hover:text-purple-600 font-medium">Corsi</Link>
+            <Link to="/#chi-siamo" onClick={() => setIsOpen(false)} className="text-stone-600 hover:text-purple-600 font-medium">Chi Siamo</Link>
+            <Link to="/attrezzature" onClick={() => setIsOpen(false)} className="text-stone-600 hover:text-purple-600 font-medium">Noleggio</Link>
+            <Link to="/prodotti" onClick={() => setIsOpen(false)} className="text-stone-600 hover:text-purple-600 font-medium">Prodotti</Link>
+            <Link to="/#contatti" onClick={() => setIsOpen(false)} className="text-stone-600 hover:text-purple-600 font-medium">Contatti</Link>
             
             <div className="border-t border-stone-100 pt-4 flex flex-col gap-3">
                {isLoggedIn ? (
                   <>
-                    <Link to="/account" className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors text-center w-full">Il mio account</Link>
+                    <Link to="/account" onClick={() => setIsOpen(false)} className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors text-center w-full">Il mio account</Link>
                   </>
                ) : (
                   <>
-                     <Link to="/autorizzazione?mode=login" className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors text-center w-full">Accedi</Link>
-                     <Link to="/autorizzazione?mode=register" className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors text-center w-full">Registrati</Link>
+                    <Link to="/autorizzazione?mode=login" onClick={() => setIsOpen(false)} className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors text-center w-full">Accedi</Link>
+                    <Link to="/autorizzazione?mode=register" onClick={() => setIsOpen(false)} className="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors text-center w-full">Registrati</Link>
                   </>
                )}
             </div>
+          </div>
           )}
         </div>
       </div>  
     </nav>
   );
 }
-
