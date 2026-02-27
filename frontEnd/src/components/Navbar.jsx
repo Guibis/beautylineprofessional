@@ -41,7 +41,7 @@ export default function Navbar() {
           <a href="#contatti" className="text-stone-600 text-center hover:text-purple-400 transition-colors font-medium">Contatti</a>
           
           <div className="flex items-center gap-6 border-l border-stone-200 pl-6">
-            <Link to="/cart" className="relative p-2 text-stone-600 hover:text-purple-600 transition-colors" aria-label="Carrello">
+            <Link to="/carrello" className="relative p-2 text-stone-600 hover:text-purple-600 transition-colors" aria-label="Carrello">
               <ShoppingCart className="w-6 h-6" />
               {totalItems > 0 && (
                 <span className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 bg-purple-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center">
@@ -62,7 +62,7 @@ export default function Navbar() {
         </div>
 
         <div className="md:hidden flex items-center gap-4" ref={menuRef}>
-          <Link to="/cart" className="relative p-2 text-stone-600 hover:text-purple-600 transition-colors" aria-label="Carrello">
+          <Link to="/carrello" className="relative p-2 text-stone-600 hover:text-purple-600 transition-colors" aria-label="Carrello">
             <ShoppingCart className="w-6 h-6" />
             {totalItems > 0 && (
               <span className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 bg-purple-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center">

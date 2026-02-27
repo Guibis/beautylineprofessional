@@ -22,6 +22,7 @@ const ProductCard = ({ id, title, description, price, publicId }) => {
           width={500} 
           height={500} 
           className="mx-auto transform transition-transform duration-500 group-hover:scale-110"
+          alt={`Immagine di ${title}`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-purple-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
@@ -36,7 +37,7 @@ const ProductCard = ({ id, title, description, price, publicId }) => {
         
         <div className="mt-auto pt-4 border-t-2 border-purple-500 flex items-center justify-between gap-4">
           <span className="text-2xl font-bold text-purple-600">
-            {price}
+            €{price}
           </span>
           <button 
             onClick={handleAddToCart}

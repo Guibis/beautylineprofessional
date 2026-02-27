@@ -20,6 +20,9 @@ const router = createBrowserRouter([
   {
     path: "/prodotti",
     element: <ProductsPage />,
+  },
+  {
+    path: "/carrello"
   }
 ]);
 
