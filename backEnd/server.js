@@ -9,9 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const allowedOrigins = [
-  process.env.FRONTEND_URL?.replace(/\/$/, ""), // Remove trailing slash if present
-  "http://localhost:5173",
-  "http://127.0.0.1:5173"
+  process.env.FRONTEND_URL?.replace(/\/$/, "")
 ].filter(Boolean);
 
 app.use(cors({
@@ -23,13 +21,20 @@ app.use(express.json());
 app.use(morgan("common"));
 app.use("/api", Router);
 
-// Connect to Database
-connectDB();
+// Connect to Database and then start listening
+const startServer = async () => {
+  try {
+    await connectDB();
+    if (require.main === module) {
+      app.listen(PORT, () => {
+        console.log("✅ Backend Server running on port:", PORT);
+      });
+    }
+  } catch (error) {
+    console.error("❌ Failed to start server:", error.message);
+  }
+};
 
-if (require.main === module) {
-  app.listen(PORT, () => {
-    console.log("Server running in port ", PORT)
-  })
-}
+startServer();
 
 module.exports = app;

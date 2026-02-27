@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const dns = require('dns');
 
-if (process.env.NODE_ENV !== 'production') {
-    if (dns.setDefaultResultOrder) {
-        dns.setDefaultResultOrder('ipv4first');
-    }
+if (dns.setDefaultResultOrder) {
+    dns.setDefaultResultOrder('ipv4first');
 }
+
+mongoose.set('debug', true);
 
 const connectDB = async () => {
     try {
@@ -19,12 +19,12 @@ const connectDB = async () => {
         }
 
         const conn = await mongoose.connect(process.env.MONGODB_URI, options);
-
         console.log(`MongoDB Connected: ${conn.connection.host}`);
+        return conn;
 
     } catch (error) {
         console.error(`MongoDB Connection Error: ${error.message}`);
-        process.exit(1);
+        throw error;
     }
 };
 
