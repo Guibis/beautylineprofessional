@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const Router = require("./routes/user.router");
@@ -7,13 +8,22 @@ const connectDB = require("./config/DBmongo");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors())
+const allowedOrigins = [
+  process.env.FRONTEND_URL?.replace(/\/$/, ""), // Remove trailing slash if present
+  "http://localhost:5173",
+  "http://127.0.0.1:5173"
+].filter(Boolean);
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+  optionsSuccessStatus: 200
+}));
 app.use(express.json());
 app.use(morgan("common"));
 app.use("/api", Router);
 
-
-require("dotenv").config();
+// Connect to Database
 connectDB();
 
 if (require.main === module) {
@@ -23,4 +33,3 @@ if (require.main === module) {
 }
 
 module.exports = app;
-
