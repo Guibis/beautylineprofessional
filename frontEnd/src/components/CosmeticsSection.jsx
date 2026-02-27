@@ -1,8 +1,10 @@
 import { COSMETICS } from "../constants/constants";
 import UploadImages from "./UploadImages";
 import { Droplets } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function CosmeticsSection() {
+  const navigate = useNavigate();
   return (
     <section id="prodotti" className="py-24 bg-gradient-to-br from-purple-200 via-white to-purple-200">
       <div className="max-w-7xl mx-auto px-6">
@@ -44,7 +46,9 @@ export default function CosmeticsSection() {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <button className="px-8 py-3 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition-colors cursor-pointer">
+              <button className="px-8 py-3 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition-colors cursor-pointer"
+              onClick={() => navigate("/prodotti")}
+              >
                 Acquista Prodotti
               </button>
               <button className="px-8 py-3 border-2 border-purple-600 text-purple-600 rounded-full font-semibold hover:bg-purple-100 transition-colors cursor-pointer">

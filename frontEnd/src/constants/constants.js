@@ -1,9 +1,9 @@
 export const FOOTER_LINKS = [
-    { name: 'I Nostri Pilastri', path: '#centroAssistenza' },
-    { name: 'Formazione', path: '#istruzione' },
-    { name: 'Tecnologia', path: '#tecnologia' },
-    { name: 'Prodotti', path: '#prodotti' },
-    { name: 'Contatti', path: '#contatti' }
+    { name: 'I Nostri Pilastri', path: '/#centroAssistenza' },
+    { name: 'Formazione', path: '/#istruzione' },
+    { name: 'Tecnologia', path: '/#tecnologia' },
+    { name: 'Prodotti', path: '/prodotti' },
+    { name: 'Contatti', path: '/#contatti' }
 ];
 
 export const HERO_SLIDES = [
@@ -29,25 +29,25 @@ export const SERVICES = [
       id: 1,
       title: "Corsi",
       image: "courseNails_vd4fgi",
-      link: "#"
+      link: "/corsi"
     },
     {
       id: 2,
       title: "Percorsi Master",
       image: "Paths_xmgp8c",
-      link: "#"
+      link: "/master"
     },
     {
       id: 3,
       title: "Prodotti",
       image: "products_yclkv1",
-      link: "#"
+      link: "/prodotti"
     },
     {
       id: 4,
       title: "Attrezzature",
       image: "equipment_zowchz",
-      link: "#"
+      link: "/attrezzature"
     }
 ];
 

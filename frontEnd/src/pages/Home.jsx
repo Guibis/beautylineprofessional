@@ -8,7 +8,6 @@ import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import AboutUs from '../components/AboutUs';
 import GoogleReviews from '../components/GoogleReviews';
-import NumbersDivider from '../components/NumbersDivider';
 import { ScrollRestoration } from 'react-router-dom';
 
 function App() {
